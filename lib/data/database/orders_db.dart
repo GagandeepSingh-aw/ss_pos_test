@@ -7,12 +7,13 @@ abstract interface class IOrdersDb {
 }
 
 class OrdersDb implements IOrdersDb {
+  final siteCode = "902";
 
   @override
   List<Order> allOrders() {
     final Map<String, List<Map<String, Object>>> ssOrdersMap = allSavedOrders;
     final OrderModel orders = OrderModel.fromJson(ssOrdersMap);
-    return orders.orders;
+    return orders.orders.where((test) => test.obdupdateHeader.siteCode == siteCode).toList();
   }
 
   @override

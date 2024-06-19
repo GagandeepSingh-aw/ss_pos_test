@@ -17,11 +17,15 @@ class ScanOrder extends ConsumerStatefulWidget {
   _ScanOrderState createState() => _ScanOrderState();
 }
 
-class _ScanOrderState extends ConsumerState<ScanOrder> with WidgetsBindingObserver {
+class _ScanOrderState extends ConsumerState<ScanOrder>
+    with WidgetsBindingObserver {
   final _mobileScannerController = MobileScannerController(
     detectionSpeed: DetectionSpeed.normal,
-    formats: [BarcodeFormat.qrCode, BarcodeFormat.code39],facing: CameraFacing.back,
-    detectionTimeoutMs: 1000,useNewCameraSelector: true, autoStart: true,
+    formats: [BarcodeFormat.qrCode, BarcodeFormat.code39],
+    facing: CameraFacing.back,
+    detectionTimeoutMs: 1000,
+    useNewCameraSelector: true,
+    autoStart: true,
   );
   StreamSubscription<Object?>? _subscription;
 
@@ -30,12 +34,10 @@ class _ScanOrderState extends ConsumerState<ScanOrder> with WidgetsBindingObserv
     final vmProvider = ref.read(scanOrderViewModelProvider);
     final oid = captures.barcodes.toSet().firstOrNull?.displayValue ?? "";
 
-    print(
-        "Scan stream ${captures.barcodes.length}.................");
+    print("Scan stream ${captures.barcodes.length}.................");
     for (var action in captures.barcodes) {
       print(action.displayValue);
     }
-
 
     if (screenMode.state == ScanState.ORDER) {
       if (oid.isNotEmpty) {
@@ -57,7 +59,9 @@ class _ScanOrderState extends ConsumerState<ScanOrder> with WidgetsBindingObserv
 
   @override
   void initState() {
-    ref.read(scanOrderViewModelProvider)..allProductsVerified = false ..lastItemResetTimer();
+    ref.read(scanOrderViewModelProvider)
+      ..allProductsVerified = false
+      ..lastItemResetTimer();
     WidgetsBinding.instance.addObserver(this);
     initSubscription();
     super.initState();
@@ -65,13 +69,16 @@ class _ScanOrderState extends ConsumerState<ScanOrder> with WidgetsBindingObserv
 
   void initSubscription() {
     _subscription = _mobileScannerController.barcodes.listen((l) {
-          print("DV/LSC -> ${l.barcodes.firstOrNull?.displayValue}/${ref.read(scanOrderViewModelProvider).lastScannedCode}");
-          if(l.barcodes.firstOrNull?.displayValue == ref.read(scanOrderViewModelProvider).lastScannedCode){
-            return;
-          }
-          ref.read(scanOrderViewModelProvider).lastScannedCode = l.barcodes.firstOrNull?.displayValue??'';
-          _handleBarcodesCaptures(l);
-        });
+      print(
+          "DV/LSC -> ${l.barcodes.firstOrNull?.displayValue}/${ref.read(scanOrderViewModelProvider).lastScannedCode}");
+      if (l.barcodes.firstOrNull?.displayValue ==
+          ref.read(scanOrderViewModelProvider).lastScannedCode) {
+        return;
+      }
+      ref.read(scanOrderViewModelProvider).lastScannedCode =
+          l.barcodes.firstOrNull?.displayValue ?? '';
+      _handleBarcodesCaptures(l);
+    });
     unawaited(_mobileScannerController.start());
   }
 
@@ -87,7 +94,7 @@ class _ScanOrderState extends ConsumerState<ScanOrder> with WidgetsBindingObserv
         return;
       case AppLifecycleState.resumed:
         {
-           initSubscription();
+          initSubscription();
         }
       case AppLifecycleState.inactive:
         {
@@ -173,30 +180,7 @@ class _ScanOrderState extends ConsumerState<ScanOrder> with WidgetsBindingObserv
         itemCount: products.length,
         itemBuilder: (ctxList, index) {
           final ObdupdateItem item = products[index];
-          return AbsorbPointer(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-              margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 2),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(2),
-                  boxShadow: const [
-                    BoxShadow(
-                        color: Colors.black54, blurRadius: 2, spreadRadius: 2)
-                  ]),
-              child: Row(children: [
-                Checkbox(
-                  value: item.checkQuantity ==
-                      (num.tryParse(item.pickedQuantity)?.toInt() ?? -1),
-                  onChanged: (_) {},
-                ),
-                spacerX(5),
-                Expanded(child: commonText(item.articleCode)),
-                commonText(
-                    '${item.checkQuantity}/${num.tryParse(item.pickedQuantity)?.toStringAsFixed(0) ?? -1}')
-              ]),
-            ),
-          );
+          return ProductTile(item: item);
         },
       );
     }));
@@ -205,6 +189,8 @@ class _ScanOrderState extends ConsumerState<ScanOrder> with WidgetsBindingObserv
   void reset() {
     ref.read(scanStateOrderProvider.notifier).state = ScanState.ORDER;
     ref.read(scanOrderViewModelProvider).reset();
+    // TODO remove below code
+    initSubscription();
   }
 
   @override
@@ -214,5 +200,49 @@ class _ScanOrderState extends ConsumerState<ScanOrder> with WidgetsBindingObserv
     _subscription = null;
     super.dispose();
     await _mobileScannerController.stop();
+  }
+}
+
+class ProductTile extends StatelessWidget {
+  const ProductTile({
+    super.key,
+    required this.item,
+  });
+
+  final ObdupdateItem item;
+
+  @override
+  Widget build(BuildContext context) {
+    return AbsorbPointer(
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+        margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 2),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(2),
+            boxShadow: const [
+              BoxShadow(color: Colors.black38, blurRadius: 4, spreadRadius: 2)
+            ]),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(children: [
+              Checkbox(
+                value: item.checkQuantity ==
+                    (num.tryParse(item.pickedQuantity)?.toInt() ?? -1),
+                onChanged: (_) {},
+              ),
+              spacerX(5),
+              Expanded(child: commonText(item.articleCode)),
+              commonText(
+                  '${item.checkQuantity}/${num.tryParse(item.pickedQuantity)?.toStringAsFixed(0) ?? -1}')
+            ]),
+            ProgressLoader(item: item)
+          ],
+        ),
+      ),
+    );
   }
 }

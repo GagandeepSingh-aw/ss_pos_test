@@ -8,9 +8,9 @@ import '../../data/models/order_model.dart';
 
 abstract interface class IScanOrderViewModel {
   List<ObdupdateItem> productsByOrderId();
+
   void reset();
 }
-
 
 abstract interface class IScannerConstants {
   String currentOrderNo = "";
@@ -19,11 +19,15 @@ abstract interface class IScannerConstants {
 
 abstract interface class IProductCheck {
   ObdupdateItem? returnIfProductExists(String skuId);
+
   ProductScanErrors updateProductQuantityBy(String skuId, int by);
+
   bool allProductsVerified = false;
 }
 
-class ScanOrderViewmodel with ChangeNotifier implements IScanOrderViewModel, IProductCheck, IScannerConstants {
+class ScanOrderViewmodel
+    with ChangeNotifier
+    implements IScanOrderViewModel, IProductCheck, IScannerConstants {
   final IOrderRepository _orderRepository;
 
   Timer? lastItemTimer;
@@ -36,7 +40,8 @@ class ScanOrderViewmodel with ChangeNotifier implements IScanOrderViewModel, IPr
 
   @override
   List<ObdupdateItem> productsByOrderId() {
-    _productListByOrder = _orderRepository.fetchOrderById(currentOrderNo)?.obdupdateItems ?? [];
+    _productListByOrder =
+        _orderRepository.fetchOrderById(currentOrderNo)?.obdupdateItems ?? [];
     notifyListeners();
     return _productListByOrder;
   }
@@ -46,6 +51,7 @@ class ScanOrderViewmodel with ChangeNotifier implements IScanOrderViewModel, IPr
       lastScannedCode = "";
     });
   }
+
   void disposeLastResetTimer() {
     lastItemTimer?.cancel();
   }
@@ -66,19 +72,26 @@ class ScanOrderViewmodel with ChangeNotifier implements IScanOrderViewModel, IPr
 
   @override
   ObdupdateItem? returnIfProductExists(String skuId) {
-    return _productListByOrder.where((test) => test.articleCode == skuId).firstOrNull;
+    return _productListByOrder
+        .where((test) => test.articleCode == skuId)
+        .firstOrNull;
   }
 
   @override
   ProductScanErrors updateProductQuantityBy(String skuId, int by) {
     final product = returnIfProductExists(skuId);
-    if(product == null) return ProductScanErrors.NoProduct;
-    print("Test/Real -> ${product.checkQuantity}/${product.pickedQuantity}");
-    if(product.checkQuantity < (num.tryParse(product.pickedQuantity)?.toInt()??-1)) {
-      _productListByOrder.firstWhere((test) => test.articleCode == skuId).checkQuantity = product.checkQuantity + by;
-      allProductsVerified = _productListByOrder.where((test) => test.checkQuantity == (num.tryParse(test.pickedQuantity)?.toInt() ?? -1)).length == _productListByOrder.length;
-
-      print("Test/Real Latest-> ${product.checkQuantity}/${product.pickedQuantity}");
+    if (product == null) return ProductScanErrors.NoProduct;
+    if (product.checkQuantity <
+        (num.tryParse(product.pickedQuantity)?.toInt() ?? -1)) {
+      _productListByOrder
+          .firstWhere((test) => test.articleCode == skuId)
+          .checkQuantity = product.checkQuantity + by;
+      allProductsVerified = _productListByOrder
+              .where((test) =>
+                  test.checkQuantity ==
+                  (num.tryParse(test.pickedQuantity)?.toInt() ?? -1))
+              .length ==
+          _productListByOrder.length;
 
       notifyListeners();
     } else {

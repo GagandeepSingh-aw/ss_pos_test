@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:pos_test/presenter/commons/common_methods.dart';
 
+import '../../data/models/order_model.dart';
+
 Future<void> showOrderVerified(BuildContext context) {
   return showDialog(
       context: context,
@@ -65,3 +67,22 @@ Future<void> showCommonDialog(
             ),
           ));
 }
+
+class ProgressLoader extends StatelessWidget {
+  const ProgressLoader({
+    super.key,
+    required this.item,
+  });
+
+  final ObdupdateItem item;
+
+  @override
+  Widget build(BuildContext context) {
+    return LinearProgressIndicator(
+      value: item.checkQuantity/(num.tryParse(item.pickedQuantity)??1),
+      backgroundColor: Colors.grey.shade200,
+      valueColor: const AlwaysStoppedAnimation<Color>(Colors.green),
+    );
+  }
+}
+
