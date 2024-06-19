@@ -81,7 +81,7 @@ class ProgressLoader extends StatelessWidget {
     return LinearProgressIndicator(
       value: item.checkQuantity/(num.tryParse(item.pickedQuantity)??1),
       backgroundColor: Colors.grey.shade200,
-      valueColor: const AlwaysStoppedAnimation<Color>(Colors.green),
+      valueColor: const AlwaysStoppedAnimation<Color>(Colors.black54),
     );
   }
 }

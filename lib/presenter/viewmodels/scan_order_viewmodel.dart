@@ -8,26 +8,23 @@ import '../../data/models/order_model.dart';
 
 abstract interface class IScanOrderViewModel {
   List<ObdupdateItem> productsByOrderId();
-
   void reset();
 }
 
-abstract interface class IScannerConstants {
+abstract interface class IScannerVariables {
   String currentOrderNo = "";
   String lastScannedCode = "";
 }
 
 abstract interface class IProductCheck {
   ObdupdateItem? returnIfProductExists(String skuId);
-
   ProductScanErrors updateProductQuantityBy(String skuId, int by);
-
   bool allProductsVerified = false;
 }
 
 class ScanOrderViewmodel
     with ChangeNotifier
-    implements IScanOrderViewModel, IProductCheck, IScannerConstants {
+    implements IScanOrderViewModel, IProductCheck, IScannerVariables {
   final IOrderRepository _orderRepository;
 
   Timer? lastItemTimer;
