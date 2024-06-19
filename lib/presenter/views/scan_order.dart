@@ -24,7 +24,7 @@ class _ScanOrderState extends ConsumerState<ScanOrder>
     detectionSpeed: DetectionSpeed.normal,
     formats: [BarcodeFormat.qrCode, BarcodeFormat.code39],
     facing: CameraFacing.back,
-    detectionTimeoutMs: 1000,
+    detectionTimeoutMs: 500,
     useNewCameraSelector: true,
     autoStart: true,
   );
