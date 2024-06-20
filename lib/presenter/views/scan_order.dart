@@ -10,6 +10,7 @@ import 'package:pos_test/presenter/commons/common_widgets.dart';
 
 import '../commons/common_methods.dart';
 import '../commons/porduct_tile.dart';
+import '../commons/scanner_related.dart';
 
 class ScanOrder extends ConsumerStatefulWidget {
   const ScanOrder({super.key});
@@ -19,7 +20,7 @@ class ScanOrder extends ConsumerStatefulWidget {
 }
 
 class _ScanOrderState extends ConsumerState<ScanOrder>
-    with WidgetsBindingObserver {
+    with WidgetsBindingObserver, SingleTickerProviderStateMixin {
   final _mobileScannerController = MobileScannerController(
     detectionSpeed: DetectionSpeed.normal,
     formats: [BarcodeFormat.qrCode, BarcodeFormat.code39],
@@ -28,32 +29,14 @@ class _ScanOrderState extends ConsumerState<ScanOrder>
     useNewCameraSelector: true,
     autoStart: true,
   );
+  late AnimationController _scanAnimationController;
+  Animation<double>? _scanAnimation;
   StreamSubscription<Object?>? _subscription;
-
-  void _handleBarcodesCaptures(BarcodeCapture captures) {
-    final screenMode = ref.read(scanStateOrderProvider.notifier);
-    final vmProvider = ref.read(scanOrderViewModelProvider);
-    final oid = captures.barcodes.toSet().firstOrNull?.displayValue ?? "";
-    if (screenMode.state == ScanState.ORDER) {
-      if (oid.isNotEmpty) {
-        vmProvider
-          ..currentOrderNo = oid
-          ..productsByOrderId();
-        if (vmProvider.products.isEmpty) {
-          vmProvider.currentOrderNo = '';
-        } else {
-          screenMode.state = ScanState.PRODUCT;
-        }
-      }
-    } else {
-      // Product scan...
-      final error = vmProvider.updateProductQuantityBy(oid, 1);
-      handleScanErrors(context, error);
-    }
-  }
 
   @override
   void initState() {
+    _scanAnimationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 3000));
     ref.read(scanOrderViewModelProvider)
       ..allProductsVerified = false
       ..lastItemResetTimer();
@@ -62,18 +45,13 @@ class _ScanOrderState extends ConsumerState<ScanOrder>
     super.initState();
   }
 
-  void initSubscription() {
-    _subscription = _mobileScannerController.barcodes.listen((scan) {
-      if (scan.barcodes.firstOrNull?.displayValue ==
-          ref.read(scanOrderViewModelProvider).lastScannedCode) {
-        return;
-      }
-      ref.read(scanOrderViewModelProvider).lastScannedCode =
-          scan.barcodes.firstOrNull?.displayValue ?? '';
-
-      _handleBarcodesCaptures(scan);
-    });
-    unawaited(_mobileScannerController.start());
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final maxScanHeight = MediaQuery.sizeOf(context).height * 0.35;
+    _scanAnimation = Tween<double>(begin: 0.0, end: maxScanHeight)
+        .animate(_scanAnimationController);
+    _scanAnimationController.repeat();
   }
 
   @override
@@ -101,6 +79,8 @@ class _ScanOrderState extends ConsumerState<ScanOrder>
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
+    final maxScanHeight = size.height * 0.35;
     return Scaffold(
       appBar: SSAppBar(title: "Scan Orders", size: 22),
       body: Padding(
@@ -134,9 +114,12 @@ class _ScanOrderState extends ConsumerState<ScanOrder>
             ),
             SizedBox(
               width: double.infinity,
-              height: MediaQuery.sizeOf(context).height * 0.35,
-              child: MobileScanner(
-                controller: _mobileScannerController,
+              height: maxScanHeight,
+              child: Stack(
+                children: [
+                  ScannerBar(mobileScannerController: _mobileScannerController),
+                  ScannerLine(scanAnimationController: _scanAnimationController, scanAnimation: _scanAnimation),
+                ],
               ),
             ),
             spacerY(6),
@@ -167,6 +150,45 @@ class _ScanOrderState extends ConsumerState<ScanOrder>
     );
   }
 
+  void _handleBarcodesCaptures(BarcodeCapture captures) {
+    final screenMode = ref.read(scanStateOrderProvider.notifier);
+    final vmProvider = ref.read(scanOrderViewModelProvider);
+    final oid = captures.barcodes.toSet().firstOrNull?.displayValue ?? "";
+    switch(screenMode.state) {
+      case ScanState.ORDER: {
+        if (oid.isNotEmpty) {
+          vmProvider
+            ..currentOrderNo = oid
+            ..productsByOrderId();
+          if (vmProvider.products.isEmpty) {
+            vmProvider.currentOrderNo = '';
+          } else {
+            screenMode.state = ScanState.PRODUCT;
+          }
+        }
+      }
+      break;
+      case ScanState.PRODUCT: {
+        final error = vmProvider.updateProductQuantityBy(oid, 1);
+        handleScanErrors(context, error);
+      }
+    }
+  }
+
+  void initSubscription() {
+    _subscription = _mobileScannerController.barcodes.listen((scan) {
+      if (scan.barcodes.firstOrNull?.displayValue ==
+          ref.read(scanOrderViewModelProvider).lastScannedCode) {
+        return;
+      }
+      ref.read(scanOrderViewModelProvider).lastScannedCode =
+          scan.barcodes.firstOrNull?.displayValue ?? '';
+
+      _handleBarcodesCaptures(scan);
+    });
+    unawaited(_mobileScannerController.start());
+  }
+
   Widget productList() {
     return Expanded(child: Consumer(builder: (ctx2, ref2, child2) {
       final products = ref2.watch(scanOrderViewModelProvider).products;
@@ -191,6 +213,7 @@ class _ScanOrderState extends ConsumerState<ScanOrder>
     WidgetsBinding.instance.removeObserver(this);
     unawaited(_subscription?.cancel());
     _subscription = null;
+    _scanAnimationController.dispose();
     super.dispose();
     await _mobileScannerController.stop();
   }

@@ -48,7 +48,514 @@ final allSavedOrders = {
           "ArticleCode": "S24K-JBSHIN402003",
           "PickedQuantity": "2.000",
           "OriginalQuantity": "2.000"
-        }
+        },
+        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },        {
+          "ShipmentLineNumber": "1",
+          "ArticleCode": "S24K-JBSHIN403003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        },
+        {
+          "ShipmentLineNumber": "2",
+          "ArticleCode": "S24K-JBSHIN402003",
+          "PickedQuantity": "2.000",
+          "OriginalQuantity": "2.000"
+        }, {
+"ShipmentLineNumber": "2",
+"ArticleCode": "S24K-JBSHIN402003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},        {
+"ShipmentLineNumber": "1",
+"ArticleCode": "S24K-JBSHIN403003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},
+{
+"ShipmentLineNumber": "2",
+"ArticleCode": "S24K-JBSHIN402003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},        {
+"ShipmentLineNumber": "1",
+"ArticleCode": "S24K-JBSHIN403003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},
+{
+"ShipmentLineNumber": "2",
+"ArticleCode": "S24K-JBSHIN402003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},        {
+"ShipmentLineNumber": "1",
+"ArticleCode": "S24K-JBSHIN403003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},
+{
+"ShipmentLineNumber": "2",
+"ArticleCode": "S24K-JBSHIN402003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},        {
+"ShipmentLineNumber": "1",
+"ArticleCode": "S24K-JBSHIN403003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},
+{
+"ShipmentLineNumber": "2",
+"ArticleCode": "S24K-JBSHIN402003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},        {
+"ShipmentLineNumber": "1",
+"ArticleCode": "S24K-JBSHIN403003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},
+{
+"ShipmentLineNumber": "2",
+"ArticleCode": "S24K-JBSHIN402003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+}, {
+"ShipmentLineNumber": "2",
+"ArticleCode": "S24K-JBSHIN402003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},        {
+"ShipmentLineNumber": "1",
+"ArticleCode": "S24K-JBSHIN403003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},
+{
+"ShipmentLineNumber": "2",
+"ArticleCode": "S24K-JBSHIN402003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},        {
+"ShipmentLineNumber": "1",
+"ArticleCode": "S24K-JBSHIN403003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},
+{
+"ShipmentLineNumber": "2",
+"ArticleCode": "S24K-JBSHIN402003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},        {
+"ShipmentLineNumber": "1",
+"ArticleCode": "S24K-JBSHIN403003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},
+{
+"ShipmentLineNumber": "2",
+"ArticleCode": "S24K-JBSHIN402003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},        {
+"ShipmentLineNumber": "1",
+"ArticleCode": "S24K-JBSHIN403003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},
+{
+"ShipmentLineNumber": "2",
+"ArticleCode": "S24K-JBSHIN402003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},        {
+"ShipmentLineNumber": "1",
+"ArticleCode": "S24K-JBSHIN403003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},
+{
+"ShipmentLineNumber": "2",
+"ArticleCode": "S24K-JBSHIN402003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},
+{
+"ShipmentLineNumber": "2",
+"ArticleCode": "S24K-JBSHIN402003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},        {
+"ShipmentLineNumber": "1",
+"ArticleCode": "S24K-JBSHIN403003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},
+{
+"ShipmentLineNumber": "2",
+"ArticleCode": "S24K-JBSHIN402003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},        {
+"ShipmentLineNumber": "1",
+"ArticleCode": "S24K-JBSHIN403003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},
+{
+"ShipmentLineNumber": "2",
+"ArticleCode": "S24K-JBSHIN402003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},        {
+"ShipmentLineNumber": "1",
+"ArticleCode": "S24K-JBSHIN403003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},
+{
+"ShipmentLineNumber": "2",
+"ArticleCode": "S24K-JBSHIN402003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},        {
+"ShipmentLineNumber": "1",
+"ArticleCode": "S24K-JBSHIN403003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},
+{
+"ShipmentLineNumber": "2",
+"ArticleCode": "S24K-JBSHIN402003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},        {
+"ShipmentLineNumber": "1",
+"ArticleCode": "S24K-JBSHIN403003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},
+{
+"ShipmentLineNumber": "2",
+"ArticleCode": "S24K-JBSHIN402003",
+"PickedQuantity": "2.000",
+"OriginalQuantity": "2.000"
+},
       ]
     },
     {
