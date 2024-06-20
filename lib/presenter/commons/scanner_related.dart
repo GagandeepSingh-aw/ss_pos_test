@@ -1,54 +1,68 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:pos_test/data/enums.dart';
+import 'package:pos_test/presenter/commons/scan_border.dart';
 
-class ScannerLine extends StatelessWidget {
-  const ScannerLine({
-    super.key,
-    required AnimationController scanAnimationController,
-    required Animation<double>? scanAnimation,
-  }) : _scanAnimationController = scanAnimationController, _scanAnimation = scanAnimation;
-
-  final AnimationController _scanAnimationController;
-  final Animation<double>? _scanAnimation;
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _scanAnimationController,
-      builder: (coxB, childB) => Transform.translate(
-        offset:
-        Offset(0, (_scanAnimation?.value.toDouble() ?? 0.0)),
-        child: const Divider(
-          color: Colors.red,
-          thickness: 2,
-          height: 2,
-        ),
-      ),
-    );
-  }
-}
-
-class ScannerBar extends StatelessWidget {
-  const ScannerBar({
-    super.key,
-    required MobileScannerController mobileScannerController,
-  }) : _mobileScannerController = mobileScannerController;
+class Scanner extends StatelessWidget {
+  const Scanner(
+      {super.key,
+      required MobileScannerController mobileScannerController,
+      required this.scanState,
+      required this.boxSize})
+      : _mobileScannerController = mobileScannerController;
 
   final MobileScannerController _mobileScannerController;
+  final ScanState scanState;
+  final Size boxSize;
+  final double orderQrRatio = 0.63;
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topCenter,
-      child: Container(
-        decoration: BoxDecoration(
-            border: Border.all(color: const Color.fromRGBO(
-                143, 0, 0, 1.0))
+    final rect = Rect.fromCenter(
+      center: boxSize.center(Offset.zero),
+      width:
+          scanState == ScanState.ORDER ? boxSize.height * orderQrRatio : boxSize.width,
+      height:
+          scanState == ScanState.ORDER ? boxSize.height * orderQrRatio : boxSize.height,
+    );
+    return Stack(
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: Container(
+            decoration: const BoxDecoration(
+                color:Colors.white,
+                boxShadow: [
+              BoxShadow(color: Colors.black45, blurRadius: 2, spreadRadius: 2)
+            ]),
+            child: MobileScanner(
+              controller: _mobileScannerController,
+              scanWindow: rect,
+            ),
+          ),
         ),
-        child: MobileScanner(
-          controller: _mobileScannerController,
-        ),
-      ),
+        scanState == ScanState.PRODUCT
+            ? const Center(
+                child: Divider(
+                  color: Colors.red,
+                  thickness: 2,
+                  height: 2,
+                ),
+              )
+            : const SizedBox(),
+        ValueListenableBuilder(
+          valueListenable: _mobileScannerController,
+          builder: (cts, controller, child) {
+            if (!controller.isInitialized ||
+                !controller.isRunning && controller.error != null) {
+              return const SizedBox();
+            }
+            return CustomPaint(
+              painter: ScannerOverlay(scanWindow: rect, borderRadius: 10),
+            );
+          },
+        )
+      ],
     );
   }
 }

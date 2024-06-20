@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 
+import 'package:flutter/material.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 import '../../data/enums.dart';
 import 'common_widgets.dart';
 
@@ -33,8 +34,8 @@ Widget commonText(
   );
 }
 
-void handleScanErrors(BuildContext context, ProductScanErrors error) {
-  switch (error) {
+void handleScanErrors(BuildContext context, ProductScanErrors error, MobileScannerController mobileScannerController) {
+   switch (error) {
     case ProductScanErrors.NoProduct:
       {
         showSnackbar(context, error, color: Colors.red);
@@ -42,10 +43,13 @@ void handleScanErrors(BuildContext context, ProductScanErrors error) {
     case ProductScanErrors.QuantityExceed:
       {
         if(context.mounted) {
-          showCommonDialog(
+          mobileScannerController.stop();
+           showCommonDialog(
               context: context,
               title: "Error",
-              message: "Can't add more items than product cart count");
+              message: "Can't add more items than product cart count").then((onValue) {
+              mobileScannerController.start();
+           });
         }
       }
     case ProductScanErrors.NoError:
